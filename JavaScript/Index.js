@@ -1,28 +1,42 @@
-const parkingTable = document.getElementById("parking-table");
-const reservationList = document.getElementById("reservation-list");
+const vagas = document.querySelectorAll('.vaga');
+const tabelaReservas = document.getElementById('reservas');
 
-// Simulação de vagas de estacionamento
-const parkingStatus = [
-    "free", "free", "free", "free", "free", "free",
-    "occupied", "free", "occupied", "free", "occupied", "free"
-];
+function randomizarStatusVagas() {
+    vagas.forEach((vaga) => {
+        const randomStatus = Math.random() < 0.5 ? 'livre' : 'ocupada';
+        vaga.classList.remove('livre', 'ocupada');
+        vaga.classList.add(randomStatus);
+    });
 
-// Inicialização da tabela de estacionamento
-for (let i = 0; i < parkingStatus.length; i++) {
-    const cell = document.createElement("td");
-    cell.className = parkingStatus[i];
-    cell.addEventListener("click", () => reserveParkingSpot(i));
-    parkingTable.rows[Math.floor(i / 6)].appendChild(cell);
+    // Limpe a tabela de reservas ao randomizar as vagas
+    tabelaReservas.innerHTML = '';
 }
 
-// Função para reservar uma vaga
-function reserveParkingSpot(index) {
-    if (parkingStatus[index] === "free") {
-        parkingStatus[index] = "occupied";
-        parkingTable.rows[Math.floor(index / 6)].cells[index % 6].className = "occupied";
-        const reservationTime = new Date().toLocaleTimeString();
-        const reservationInfo = document.createElement("li");
-        reservationInfo.textContent = `Vaga ${index + 1} reservada às ${reservationTime}`;
-        reservationList.appendChild(reservationInfo);
-    }
-}
+// Chame a função para randomizar as vagas quando a página carregar
+window.addEventListener('load', randomizarStatusVagas);
+
+vagas.forEach((vaga, index) => {
+    vaga.addEventListener('click', () => {
+        if (vaga.classList.contains('livre')) {
+            vaga.classList.remove('livre');
+            vaga.classList.add('ocupada');
+            const dataHora = new Date();
+            const dia = dataHora.toLocaleDateString();
+            const hora = dataHora.toLocaleTimeString();
+
+            // Crie uma nova linha na tabela de reservas
+            const newRow = tabelaReservas.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            cell1.innerHTML = `Vaga ${index + 1}`;
+            cell2.innerHTML = dia;
+            cell3.innerHTML = hora;
+            document.getElementById('info').innerHTML = `Vaga ${index + 1} reservada em ${dia}`;
+            alert("A reserva foi definida.");
+        } else {
+            document.getElementById('info').innerHTML = 'Esta vaga já está ocupada.';
+            alert("Vaga já ocupada.");
+        }
+    });
+});
