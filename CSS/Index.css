@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&family=Bebas+Neue&family=Josefin+Slab:wght@100&family=Michroma&family=Overpass+Mono:wght@300&family=Syncopate&family=Thasadith&family=Tsukimi+Rounded:wght@300&display=swap');
+
+/*
+font-family: 'Bai Jamjuree', sans-serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Michroma', sans-serif;
+font-family: 'Overpass Mono', monospace;
+font-family: 'Syncopate', sans-serif;
+font-family: 'Thasadith', sans-serif;
+font-family: 'Tsukimi Rounded', sans-serif;
+*/
+
+html {
+    --s: 50px;
+    --c: #191b22;
+    --_s: calc(2*var(--s)) calc(2*var(--s));
+    --_g: 35.36% 35.36% at;
+    --_c: #0000 66%,#20222a 68% 70%,#0000 72%;
+    background: 
+      radial-gradient(var(--_g) 100% 25%,var(--_c)) var(--s) var(--s)/var(--_s), 
+      radial-gradient(var(--_g) 0 75%,var(--_c)) var(--s) var(--s)/var(--_s), 
+      radial-gradient(var(--_g) 100% 25%,var(--_c)) 0 0/var(--_s), 
+      radial-gradient(var(--_g) 0 75%,var(--_c)) 0 0/var(--_s), 
+      repeating-conic-gradient(var(--c) 0 25%,#0000 0 50%) 0 0/var(--_s), 
+      radial-gradient(var(--_c)) 0 calc(var(--s)/2)/var(--s) var(--s) var(--c);
+    background-attachment: fixed;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: aliceblue;
     text-align: center;
-    background-color: #f0f0f0;
 }
 
 .Section1{
@@ -14,7 +43,16 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: aliceblue;
+    font-size: 50px;
+    margin: 0;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+h2{
+    margin: 0;
+    margin-bottom: 40px;
 }
 
 .vagas {
@@ -26,8 +64,8 @@ h1 {
 }
 
 .vaga {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 150px;
     background-color: #00ff00; /* Verde para vagas livres */
     display: flex;
     justify-content: center;
@@ -35,6 +73,9 @@ h1 {
     font-weight: bold;
     font-size: 18px;
     cursor: pointer;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
 }
 
 .info{
@@ -45,6 +86,7 @@ h1 {
 .Reserva{
     padding: 10px;
     margin: 10px;
+    font-size: 40px;
 }
 
 table{

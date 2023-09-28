@@ -9,6 +9,8 @@
 <body>
     <section class="Section1">
         <h1>Vagas de Estacionamento</h1>
+        <br>
+        <h2>Reserve as Vaga Disponíveis</h2>
         <div class="vagas">
             <!-- Vagas livres -->
             <div class="vaga livre">1</div>
@@ -38,15 +40,19 @@
         <div class="Reserva">
             <table>
                 <thead>
+                    <tr>Reserva</tr>
+                </thead>
+                <thead>
                     <tr>
                         <th>Vaga</th>
-                        <th>Data da Reserva</th>
+                        <th>Data</th>
                     </tr>
                 </thead>
                 <tbody id="reservas"></tbody>
             </table>    
         </div>
     </section>
+    <button id="resetButton">Resetar Reservas</button>
     <script src="/JavaScript/Index.js"></script>
 </body>
 </html>
